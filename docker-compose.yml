@@ -80,10 +80,11 @@ services:
       - postgres
 
   newsapi:
+    container_name: news-api
     image: ${DOCKER_REGISTRY-}newsapi
     build:
-      context: NewsAPI
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./NewsAPI/Dockerfile
     environment:
       - DB_HOST=postgres
       - POSTGRES_DB=newsdb
