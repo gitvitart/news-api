@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.DataProtection;
+using NewsAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 
