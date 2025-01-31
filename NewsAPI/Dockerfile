@@ -15,13 +15,13 @@ COPY ["./NewsAPI/NewsAPI.csproj", "."]
 RUN dotnet restore "./NewsAPI.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "./NewsAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./NewsAPI/NewsAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./NewsAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./NewsAPI/NewsAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "NewsAPI.dll"]
+ENTRYPOINT ["dotnet", "./NewsAPI/NewsAPI.dll"]
