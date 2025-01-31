@@ -13,14 +13,9 @@ namespace NewsAPI.Entities
             public virtual void Configure(EntityTypeBuilder<T> builder)
             {
                 builder.Property(entity => entity.CreatedAt)
-                    .HasColumnType("timestamp with time zone")
-                    .HasDefaultValue("current_timestamp")
-                    .ValueGeneratedOnAddOrUpdate()
                     .IsRequired(IsCreatedAtRequired);
 
                 builder.Property(entity => entity.UpdatedAt)
-                    .HasColumnType("timestamp with time zone")
-                    .HasDefaultValue("current_timestamp")
                     .IsRequired(IsUpdatedAtRequired);
             }
         }
