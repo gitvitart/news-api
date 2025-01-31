@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.DataProtection;
 using NewsAPI;
+using NewsAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,10 @@ builder.Services.AddScoped(provider => new DataContext(connectionString));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<AuthorService>();
+builder.Services.AddScoped<TopicService>();
+builder.Services.AddScoped<ArticleService>();
 
 var app = builder.Build();
 
