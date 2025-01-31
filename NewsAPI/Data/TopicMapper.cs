@@ -25,5 +25,6 @@ namespace NewsAPI.Data
                 CreatedAt = topic.CreatedAt
             };
 
+        }
     }
 }
