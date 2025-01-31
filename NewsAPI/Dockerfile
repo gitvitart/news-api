@@ -11,7 +11,7 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 RUN ls -a
 RUN pwd
-COPY ["NewsAPI.csproj", "."]
+COPY ["./NewsAPI/NewsAPI.csproj", "."]
 RUN dotnet restore "./NewsAPI.csproj"
 COPY . .
 WORKDIR "/src/."
